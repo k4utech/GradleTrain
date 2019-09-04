@@ -1,0 +1,65 @@
+//def projectVersion=2.0
+project.ext.projectVersion=8.0
+
+project.task("Task1")
+
+task("Task2")
+
+task "Task3"
+
+task Task4
+
+Task1.description = "Task 1 desription"
+
+Task1.doLast {
+	println "Last thing to do"
+}
+
+Task2.doLast { println "Task 2 last thing to do" }	
+
+task Task5 {
+	println "Last thing of Task 5"
+}
+
+/*Extensstion*/
+Task5 {
+	println "Task 5 another statement"
+}
+
+Task5.doLast {
+	println "Task 5 do Last 1"
+}
+
+Task5.doLast {
+	println "Task 5 do Last 2"
+}
+
+task Task6 {
+	description = "This is task 6"
+
+	dependsOn Task2,Task1
+
+	println "Description and I am a part of configuration phase"
+
+
+	doFirst{
+		println "First of Task 6"
+	}
+
+	doLast{
+		println "Last of task 6, Version : $projectVersion"
+	}
+}
+
+Task6.doFirst{
+	println "Overridden Task6 Do First"
+}
+
+Task6.doLast{
+		println "Overridden Task 6 Do Last"
+}
+
+
+Task1.dependsOn Task2
+
+// ADG

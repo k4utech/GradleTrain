@@ -1,0 +1,9 @@
+task copySrc(type : Copy){
+	exclude	 '1.txt'
+	from 'src'
+	into 'target'
+}
+
+task clean(type: Delete) {
+  delete 'target'
+}
